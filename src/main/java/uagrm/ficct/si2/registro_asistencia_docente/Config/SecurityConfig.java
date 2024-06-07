@@ -11,6 +11,8 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 //import com.irojas.demojwt.Jwt.JwtAuthenticationFilter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import uagrm.ficct.si2.registro_asistencia_docente.Jwt.JwtAuthenticationFilter;
 
 import lombok.RequiredArgsConstructor;
@@ -27,22 +29,31 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception
     {
         return http
-            .csrf(csrf -> 
-                csrf
-                .disable())
+            .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(authRequest ->
               authRequest
-                .requestMatchers("/auth/**").permitAll()
-                .anyRequest().authenticated()
-                )
+                .requestMatchers("/auth/**","/api/**").permitAll()
+
+                .anyRequest().authenticated()//quitar
+                )//quitar
             .sessionManagement(sessionManager->
-                sessionManager 
+                sessionManager
                   .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authenticationProvider(authProvider)
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
             .build();
-            
-            
+
+
+    }
+
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**").allowedOrigins("*").allowedMethods("*");
+            }
+        };
     }
 
 }

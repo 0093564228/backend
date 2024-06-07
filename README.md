@@ -53,3 +53,16 @@ Al ejecutar el proyecto por primera vez se crearan una tabla en la base de datos
 * POST http://127.0.0.1:8080/api/carrera
 * POST http://127.0.0.1:8080/api/grupo
 * etc...
+
+
+
+## Observaciones
+
+* FUNCIONALIDAD EXTRA = calculo de carga horaria
+
+  * por ejemplo -> si un docente pasa clases martes y jueves entonces asiste 8 veces al mes a una materia en un grupo en un aula en un horario de inicio y fin
+  * 8 x 2hrs = 16hrs al mes, su carga horaria mensual es de 16hrs.
+  
+  * Realizar un programa que me permita calcular la carga horaria acumulada por el horario que se le asigna a un docente
+  * 
+   
