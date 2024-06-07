@@ -14,6 +14,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Programacion.Programacion;
 
 
 @Data
@@ -36,18 +37,18 @@ public class User implements UserDetails {
     String password;
 
 
-
     @Enumerated(EnumType.STRING) 
     Role role;
 
-    /*@OneToMany(mappedBy = "user")
-    @JsonManagedReference
-    private List<ProgramacionAcademica> programacionAcademicas;*/
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL/*, orphanRemoval = true*/)
+    /*@JsonManagedReference*/
+    private List<Programacion> programaciones;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
       return List.of(new SimpleGrantedAuthority((role.name())));
     }
+
     @Override
     public boolean isAccountNonExpired() {
        return true;

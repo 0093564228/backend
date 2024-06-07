@@ -5,6 +5,9 @@ import org.springframework.stereotype.Service;
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Materia.Materia;
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Materia.MateriaRepository;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Service
 @AllArgsConstructor
 public class ProgramacionService {
@@ -20,6 +23,8 @@ public class ProgramacionService {
     }
 
     public Programacion createProgramacion(Programacion programacion) {
+        programacion.setHorario_inicio(LocalDateTime.now().toLocalDate());
+        programacion.setHorario_fin(LocalDateTime.now().toLocalDate());
         return programacionRepository.save(programacion);
     }
 
@@ -27,7 +32,6 @@ public class ProgramacionService {
         Programacion programacionToUpdate = getProgramacionById(id);
         /*programacionToUpdate.setNombre(programacion.getNombre());*/
         return programacionRepository.save(programacionToUpdate);
-
     }
 
     public void deleteProgramacion(Integer id) {

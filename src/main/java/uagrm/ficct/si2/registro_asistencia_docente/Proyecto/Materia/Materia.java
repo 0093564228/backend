@@ -1,7 +1,9 @@
 package uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Materia;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,6 +20,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+/*@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")*/
 public class Materia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,21 +35,22 @@ public class Materia {
     @JsonBackReference
     private Carrera carrera;
 
-   /* @OneToMany(mappedBy = "materia",cascade = CascadeType.ALL*//*, orphanRemoval = true*//*)
-    @JsonManagedReference
-    private List<Programacion> programaciones;*/
+    /*2*/
+     @OneToMany(mappedBy = "materia",cascade = CascadeType.ALL/*, orphanRemoval = true*/)
+    /*@JsonManagedReference*/
+    private List<Programacion> programaciones;
 
     /*@ManyToMany(mappedBy = "materias")
     @JsonManagedReference
     private List<Grupo> grupos;*/
 
-
-    @ManyToMany
+    /*1*/
+   /* @ManyToMany
     @JoinTable(
             name = "programacion",
-            /*joinColumns = @JoinColumn(name = "materias_id"),*/
+            joinColumns = @JoinColumn(name = "materias_id"),
             inverseJoinColumns = @JoinColumn(name = "grupos_id")
     )
-    /*@JsonManagedReference*/
-    private List<Grupo> grupos;
+    *//*@JsonManagedReference*//*
+    private List<Grupo> grupos;*/
 }

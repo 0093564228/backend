@@ -1,7 +1,9 @@
 package uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Grupo;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,6 +19,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+/*@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")*/
 public class Grupo {
 
     @Id
@@ -25,10 +28,10 @@ public class Grupo {
     @Column
     private String nombre;
 
-
-    /*@OneToMany(mappedBy = "grupo",cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private List<Programacion> programaciones;*/
+    /*2*/
+    @OneToMany(mappedBy = "grupo", cascade = CascadeType.ALL)
+    /*@JsonManagedReference*/
+    private List<Programacion> programaciones;
 
     /*@ManyToMany(mappedBy = "grupos")
     @JsonManagedReference
@@ -42,8 +45,9 @@ public class Grupo {
     )
     private List<Materia> materias;*/
 
-    @ManyToMany(mappedBy = "grupos")
-    /*@JsonManagedReference*/
-    /*@JsonBackReference*/
-    private List<Materia> materias;
+    /*1*/
+  /*  @ManyToMany(mappedBy = "grupos")
+    *//*@JsonManagedReference*//*
+    @JsonBackReference
+    private List<Materia> materias;*/
 }

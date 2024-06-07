@@ -26,9 +26,4 @@ public class Facultad {
     @JsonManagedReference
     private List<Carrera> carreras;
 
-    @ManyToOne()
-    @JoinColumn(name = "facultad_id", nullable = false)
-    @JsonBackReference
-    private Facultad facultad;
-
 }
