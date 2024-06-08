@@ -23,8 +23,8 @@ public class ProgramacionService {
     }
 
     public Programacion createProgramacion(Programacion programacion) {
-        programacion.setHorario_inicio(LocalDateTime.now().toLocalDate());
-        programacion.setHorario_fin(LocalDateTime.now().toLocalDate());
+        /*programacion.setHorario_inicio(LocalDateTime.now().toLocalDate());
+        programacion.setHorario_fin(LocalDateTime.now().toLocalDate());*/
         return programacionRepository.save(programacion);
     }
 
