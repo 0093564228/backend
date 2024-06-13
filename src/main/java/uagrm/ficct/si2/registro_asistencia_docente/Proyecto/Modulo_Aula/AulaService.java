@@ -5,33 +5,49 @@ import org.springframework.stereotype.Service;
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Facultad.Facultad;
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Facultad.FacultadRepository;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 @AllArgsConstructor
 @Service
 public class AulaService {
 
-    private final AulaRepository aulaRepository;
+  private AulaRepository aulaRepository;
 
+  public List<AulaDTO> findAll() {
+    List<Aula> aulas = aulaRepository.findAll();
+    return aulas.stream()
+            .map(this::convertToDto)
+            .collect(Collectors.toList());
+  }
 
-    public Iterable<Aula> getAllAulas() {
-        return aulaRepository.findAll();
-    }
+  public Optional<AulaDTO> findById(Integer id) {
+    Optional<Aula> aulaOptional = aulaRepository.findById(id);
+    return aulaOptional.map(this::convertToDto);
+  }
 
-    public Aula getAulaById(Integer id) {
-        return aulaRepository.findById(id).orElse(null);
-    }
+  public AulaDTO save(AulaDTO aulaDTO) {
+    Aula aula = convertToEntity(aulaDTO);
 
-    public Aula createAula(Aula facultad) {
-        return aulaRepository.save(facultad);
-    }
+    // Guardar aula y programaciones si es necesario
 
-    public Aula updateAula(Integer id, Aula aula) {
-        Aula aulaToUpdate = getAulaById(id);
-        aulaToUpdate.setNombre(aula.getNombre());
-        return aulaRepository.save(aulaToUpdate);
-    }
+    aula = aulaRepository.save(aula);
 
-    public void deleteAula(Integer id) {
-        Aula aulaToDelete = getAulaById(id);
-        aulaRepository.delete(aulaToDelete);
-    }
+    return convertToDto(aula);
+  }
+
+  public void deleteById(Integer id) {
+    aulaRepository.deleteById(id);
+  }
+
+  // Método para convertir de Aula a AulaDTO
+  private AulaDTO convertToDto(Aula aula) {
+    return new AulaDTO(aula.getId(), aula.getNombre());
+  }
+
+  // Método para convertir de AulaDTO a Aula
+  private Aula convertToEntity(AulaDTO aulaDTO) {
+    return new Aula(aulaDTO.getId(), aulaDTO.getNombre(),null);
+  }
 }

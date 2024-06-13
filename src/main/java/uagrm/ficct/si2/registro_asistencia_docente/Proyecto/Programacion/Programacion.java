@@ -9,13 +9,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Asistencia.Asistencia;
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Facultad.Facultad;
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Grupo.Grupo;
+import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Licencia.Licencia;
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Materia.Materia;
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Modulo_Aula.Aula;
 import uagrm.ficct.si2.registro_asistencia_docente.User.User;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 
@@ -26,59 +29,36 @@ import java.util.Set;
 /*@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")*/
 public class Programacion {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id;
 
-    @Column
-    private LocalDate horario_inicio;
+  @Column
+  private LocalDateTime horario_inicio;
 
-    @Column
-    private LocalDate horario_fin;
+  @Column
+  private LocalDateTime horario_fin;
 
-    /*1*/
-   /* @Column
-    private Integer grupos_id;
+  @ManyToOne
+  @JoinColumn(name = "materia_id"/*, nullable = false*/)
+  /*@JsonBackReference*/
+  private Materia materia;
 
-    @Column
-    private Integer materias_id;*/
+  @ManyToOne
+  @JoinColumn(name = "grupo_id"/*, nullable = false*/)
+  /*@JsonBackReference*/
+  private Grupo grupo;
 
-    /*2*/
-    @ManyToOne
-    @JoinColumn(name = "materia_id"/*, nullable = false*/)
-    /*@JsonBackReference*/
-    private Materia materia;
+  @ManyToOne
+  @JoinColumn(name = "aula_id"/*, nullable = false*/)
+  /*@JsonBackReference*/
+  private Aula aula;
 
+  @ManyToOne
+  @JoinColumn(name = "user_id"/*, nullable = false*/)
+  /*@JsonBackReference*/
+  private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "grupo_id"/*, nullable = false*/)
-    /*@JsonBackReference*/
-    private Grupo grupo;
-
-    @ManyToOne
-    @JoinColumn(name = "aula_id"/*, nullable = false*/)
-    /*@JsonBackReference*/
-    private Aula aula;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id"/*, nullable = false*/)
-    /*@JsonBackReference*/
-    private User user;
-
-/*
-    @ManyToMany
-    @JoinTable(
-            name = "programacion",
-            joinColumns = @JoinColumn(name = "programacion_id"),
-            inverseJoinColumns = @JoinColumn(name = "grupo_id")
-    )
-    private Set<Grupo> grupos;
-
-    @ManyToMany
-    @JoinTable(
-            name = "programacion",
-            joinColumns = @JoinColumn(name = "programacion_id"),
-            inverseJoinColumns = @JoinColumn(name = "materia_id")
-    )
-    private Set<Materia> materias;*/
+  @OneToMany(mappedBy = "programacion", cascade = CascadeType.ALL)
+  private List<Asistencia> asistencias;
 }

@@ -1,42 +1,53 @@
 package uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Materia;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Carrera.Carrera;
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Carrera.CarreraService;
+
+import java.util.List;
+import java.util.Optional;
 
 @AllArgsConstructor
 @RequestMapping("/api/materias")
 @RestController
 public class MateriaController {
-    private final MateriaService materiaService;
+  private MateriaService materiaService;
 
-    @GetMapping
-    public Iterable<Materia> list() {
-        return materiaService.getAllMateria();
-    }
+  @GetMapping
+  public ResponseEntity<List<MateriaDTO>> getAll() {
+    List<MateriaDTO> materias = materiaService.findAll();
+    return ResponseEntity.ok(materias);
+  }
 
-    @GetMapping("{id}")
-    public Materia get(@PathVariable Integer id) {
-        return materiaService.getMateriaById(id);
-    }
+  @GetMapping("/{id}")
+  public ResponseEntity<MateriaDTO> get(@PathVariable Integer id) {
+    Optional<MateriaDTO> materiaDTO = materiaService.findById(id);
+    return materiaDTO.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+  }
 
-    @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/create")
-    public Materia create(@RequestBody Materia materia) {
-        return  materiaService.createMateria(materia);
-    }
+  @PostMapping("/create")
+  public ResponseEntity<MateriaDTO> create(@RequestBody MateriaDTO materiaDTO) {
+    MateriaDTO savedMateria = materiaService.save(materiaDTO);
+    return ResponseEntity.ok(savedMateria);
+  }
 
-    @PutMapping("update/{id}")
-    public Materia update(@PathVariable Integer id,
-                          @RequestBody Materia materia) {
-        return  materiaService.updateMateria(id,materia);
+  @PutMapping("/update/{id}")
+  public ResponseEntity<MateriaDTO> update(@PathVariable Integer id, @RequestBody MateriaDTO materiaDTO) {
+    try {
+      MateriaDTO updatedMateria = materiaService.update(id, materiaDTO);
+      return ResponseEntity.ok(updatedMateria);
+    } catch (EntityNotFoundException e) {
+      return ResponseEntity.notFound().build();
     }
+  }
 
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("{id}")
-    public void delete(@PathVariable Integer id) {
-        materiaService.deleteMateria(id);
-    }
+  @DeleteMapping("/{id}")
+  public ResponseEntity<Void> delete(@PathVariable Integer id) {
+    materiaService.deleteById(id);
+    return ResponseEntity.noContent().build();
+  }
 }

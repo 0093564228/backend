@@ -1,36 +1,56 @@
 package uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Facultad;
 
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Carrera.Carrera;
+import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Carrera.CarreraDTO;
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Carrera.CarreraRepository;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Service
 public class FacultadService {
+  private FacultadRepository facultadRepository;
 
-    private final FacultadRepository facultadRepository;
+  @Transactional
+  public List<FacultadDTO> findAll() {
+    return facultadRepository.findAll().stream()
+            .map(this::convertToDto)
+            .collect(Collectors.toList());
+  }
 
-    public Iterable<Facultad> getAllFacultades() {
-        return facultadRepository.findAll();
-    }
+  @Transactional
+  public Optional<FacultadDTO> findById(Integer id) {
+    return facultadRepository.findById(id).map(this::convertToDto);
+  }
 
-    public Facultad getFacultadById(Integer id) {
-        return facultadRepository.findById(id).orElse(null);
-    }
+  @Transactional
+  public FacultadDTO save(FacultadDTO facultadDTO) {
+    Facultad facultad = convertToEntity(facultadDTO);
+    facultad = facultadRepository.save(facultad);
+    return convertToDto(facultad);
+  }
 
-    public Facultad createFacultad(Facultad facultad) {
-        return facultadRepository.save(facultad);
-    }
+  @Transactional
+  public void deleteById(Integer id) {
+    facultadRepository.deleteById(id);
+  }
 
-    public Facultad updateFacultad(Integer id, Facultad facultad) {
-        Facultad facultadToUpdate = getFacultadById(id);
-        facultadToUpdate.setNombre(facultad.getNombre());
-        return facultadRepository.save(facultadToUpdate);
-    }
+  @Transactional
+  public FacultadDTO update(FacultadDTO facultadDTO) {
+    Facultad facultad = convertToEntity(facultadDTO);
+    facultad = facultadRepository.save(facultad);
+    return convertToDto(facultad);
+  }
 
-    public void deleteFacultad(Integer id) {
-        Facultad facultadToDelete = getFacultadById(id);
-        facultadRepository.delete(facultadToDelete);
-    }
+  public FacultadDTO convertToDto(Facultad facultad) {
+    return new FacultadDTO(facultad.getId(), facultad.getNombre());
+  }
+
+  public Facultad convertToEntity(FacultadDTO facultadDTO) {
+    return new Facultad(facultadDTO.getId(), facultadDTO.getNombre(), null);
+  }
 }

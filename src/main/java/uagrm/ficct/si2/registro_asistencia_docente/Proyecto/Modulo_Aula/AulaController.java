@@ -2,9 +2,13 @@ package uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Modulo_Aula;
 
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Facultad.Facultad;
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Facultad.FacultadService;
+
+import java.util.List;
+import java.util.Optional;
 
 
 @AllArgsConstructor
@@ -12,33 +16,36 @@ import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Facultad.FacultadSer
 @RestController
 public class AulaController {
 
-    private final AulaService aulaService;
+    private AulaService aulaService;
 
     @GetMapping
-    public Iterable<Aula> list() {
-        return aulaService.getAllAulas();
+    public List<AulaDTO> getAllAulas() {
+        return aulaService.findAll();
     }
 
-    @GetMapping("{id}")
-    public Aula get(@PathVariable Integer id) {
-        return aulaService.getAulaById(id);
+    @GetMapping("/{id}")
+    public ResponseEntity<AulaDTO> getAulaById(@PathVariable Integer id) {
+        Optional<AulaDTO> aulaDTO = aulaService.findById(id);
+        return aulaDTO.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/create")
-    public Aula create(@RequestBody Aula aula) {
-        return aulaService.createAula(aula);
+    public ResponseEntity<AulaDTO> createAula(@RequestBody AulaDTO aulaDTO) {
+        AulaDTO savedAula = aulaService.save(aulaDTO);
+        return ResponseEntity.ok(savedAula);
     }
 
-    @PutMapping("update/{id}")
-    public Aula update(@PathVariable Integer id,
-                       @RequestBody Aula aula) {
-        return aulaService.updateAula(id, aula);
+    @PutMapping("/update/{id}")
+    public ResponseEntity<AulaDTO> updateAula(@PathVariable Integer id, @RequestBody AulaDTO aulaDTO) {
+        aulaDTO.setId(id);
+        AulaDTO updatedAula = aulaService.save(aulaDTO);
+        return ResponseEntity.ok(updatedAula);
     }
 
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("{id}")
-    public void delete(@PathVariable Integer id) {
-        aulaService.deleteAula(id);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteAula(@PathVariable Integer id) {
+        aulaService.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }

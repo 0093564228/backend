@@ -28,4 +28,9 @@ public class Aula {
     @OneToMany(mappedBy = "aula",cascade = CascadeType.ALL/*, orphanRemoval = true*/)
     /*@JsonManagedReference*/
     private List<Programacion> programaciones;
+
+    public Aula(Integer id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
+    }
 }

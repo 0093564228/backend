@@ -32,13 +32,19 @@ public class Materia {
 
     @ManyToOne()
     @JoinColumn(name = "carrera_id"/*, nullable = false*/)
-    @JsonBackReference
+    /*@JsonBackReference*/
     private Carrera carrera;
 
     /*2*/
-     @OneToMany(mappedBy = "materia",cascade = CascadeType.ALL/*, orphanRemoval = true*/)
+    @OneToMany(mappedBy = "materia",cascade = CascadeType.ALL/*, orphanRemoval = true*/)
     /*@JsonManagedReference*/
     private List<Programacion> programaciones;
+
+    public Materia(Integer id, String nombre, String sigla, Object o) {
+        this.id = id;
+        this.nombre = nombre;
+        this.sigla = sigla;
+    }
 
     /*@ManyToMany(mappedBy = "materias")
     @JsonManagedReference

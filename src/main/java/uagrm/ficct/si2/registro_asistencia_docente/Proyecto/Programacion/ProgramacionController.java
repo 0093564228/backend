@@ -2,42 +2,54 @@ package uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Programacion;
 
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Materia.Materia;
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Materia.MateriaService;
+
+import java.util.List;
+import java.util.Optional;
 
 @AllArgsConstructor
 @RequestMapping("/api/programacion")
 @RestController
 public class ProgramacionController {
 
-    private final ProgramacionService programacionService;
+  private ProgramacionService programacionService;
 
-    @GetMapping
-    public Iterable<Programacion> list() {
-        return programacionService.getAllProgramacion();
-    }
+  // Endpoint para obtener todas las programaciones
+  @GetMapping
+  public ResponseEntity<List<ProgramacionDTO>> getAllProgramaciones() {
+    List<ProgramacionDTO> programaciones = programacionService.findAll();
+    return ResponseEntity.ok(programaciones);
+  }
 
-    @GetMapping("{id}")
-    public Programacion get(@PathVariable Integer id) {
-        return programacionService.getProgramacionById(id);
-    }
+  // Endpoint para obtener una programación por su ID
+  @GetMapping("/{id}")
+  public ResponseEntity<ProgramacionDTO> getProgramacionById(@PathVariable Integer id) {
+    Optional<ProgramacionDTO> programacion = programacionService.findById(id);
+    return programacion.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+  }
 
-    @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/create")
-    public Programacion create(@RequestBody Programacion programacion) {
-        return  programacionService.createProgramacion(programacion);
-    }
+  // Endpoint para crear una nueva programación
+  @PostMapping("/create")
+  public ResponseEntity<ProgramacionDTO> createProgramacion(@RequestBody ProgramacionDTO programacionDTO) {
+    ProgramacionDTO createdProgramacion = programacionService.save(programacionDTO);
+    return ResponseEntity.status(HttpStatus.CREATED).body(createdProgramacion);
+  }
 
-    @PutMapping("update/{id}")
-    public Programacion update(@PathVariable Integer id,
-                          @RequestBody Programacion programacion) {
-        return  programacionService.updateProgramacion(id,programacion);
-    }
+  // Endpoint para actualizar una programación existente
+  @PutMapping("/update/{id}")
+  public ResponseEntity<ProgramacionDTO> updateProgramacion(@PathVariable Integer id, @RequestBody ProgramacionDTO programacionDTO) {
+    programacionDTO.setId(id); // aseguramos que el ID coincida con el path variable
+    ProgramacionDTO updatedProgramacion = programacionService.save(programacionDTO);
+    return ResponseEntity.ok(updatedProgramacion);
+  }
 
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("{id}")
-    public void delete(@PathVariable Integer id) {
-        programacionService.deleteProgramacion(id);
-    }
+  // Endpoint para eliminar una programación por su ID
+  @DeleteMapping("/{id}")
+  public ResponseEntity<Void> deleteProgramacion(@PathVariable Integer id) {
+    programacionService.deleteById(id);
+    return ResponseEntity.noContent().build();
+  }
 }

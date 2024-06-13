@@ -5,34 +5,49 @@ import org.springframework.stereotype.Service;
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Facultad.Facultad;
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Facultad.FacultadRepository;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 @AllArgsConstructor
 @Service
 public class GrupoService {
 
-    private final GrupoRepository grupoRepository;
+    private GrupoRepository grupoRepository;
 
-
-    public Iterable<Grupo> getAllGrupos() {
-        return grupoRepository.findAll();
+    public List<GrupoDTO> findAll() {
+        List<Grupo> grupos = grupoRepository.findAll();
+        return grupos.stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
     }
 
-    public Grupo getGrupoById(Integer id) {
-        return grupoRepository.findById(id).orElse(null);
+    public Optional<GrupoDTO> findById(Integer id) {
+        Optional<Grupo> grupoOptional = grupoRepository.findById(id);
+        return grupoOptional.map(this::convertToDto);
     }
 
-    public Grupo createGrupo(Grupo grupo) {
-        return grupoRepository.save(grupo);
+    public GrupoDTO save(GrupoDTO grupoDTO) {
+        Grupo grupo = convertToEntity(grupoDTO);
+
+        // Guardar grupo y programaciones si es necesario
+
+        grupo = grupoRepository.save(grupo);
+
+        return convertToDto(grupo);
     }
 
-    public Grupo updateGrupo(Integer id, Grupo grupo) {
-        Grupo grupoToUpdate = getGrupoById(id);
-        grupoToUpdate.setNombre(grupo.getNombre());
-        return grupoRepository.save(grupoToUpdate);
-
+    public void deleteById(Integer id) {
+        grupoRepository.deleteById(id);
     }
 
-    public void deleteGrupo(Integer id) {
-        Grupo grupoToDelete = getGrupoById(id);
-        grupoRepository.delete(grupoToDelete);
+    // Método para convertir de Grupo a GrupoDTO
+    private GrupoDTO convertToDto(Grupo grupo) {
+        return new GrupoDTO(grupo.getId(), grupo.getNombre());
+    }
+
+    // Método para convertir de GrupoDTO a Grupo
+    private Grupo convertToEntity(GrupoDTO grupoDTO) {
+        return new Grupo(grupoDTO.getId(), grupoDTO.getNombre(),null);
     }
 }

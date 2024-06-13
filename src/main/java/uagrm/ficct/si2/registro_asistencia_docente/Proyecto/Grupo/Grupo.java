@@ -33,6 +33,11 @@ public class Grupo {
     /*@JsonManagedReference*/
     private List<Programacion> programaciones;
 
+    public Grupo(Integer id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
+    }
+
     /*@ManyToMany(mappedBy = "grupos")
     @JsonManagedReference
     private Set<Programacion> programaciones;*/

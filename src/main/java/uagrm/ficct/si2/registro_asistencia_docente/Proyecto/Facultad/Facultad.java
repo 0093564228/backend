@@ -1,7 +1,9 @@
 package uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Facultad;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,6 +17,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+/*@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")*/
 public class Facultad {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +26,7 @@ public class Facultad {
     private String nombre;
 
     @OneToMany(mappedBy = "facultad",cascade = CascadeType.ALL/*, orphanRemoval = true*/)
-    @JsonManagedReference
+    /*@JsonManagedReference*/
     private List<Carrera> carreras;
 
 }

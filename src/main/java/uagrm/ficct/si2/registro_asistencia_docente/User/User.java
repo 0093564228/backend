@@ -4,7 +4,9 @@ package uagrm.ficct.si2.registro_asistencia_docente.User;
 import java.util.Collection;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -14,6 +16,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Licencia.Licencia;
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Programacion.Programacion;
 
 
@@ -22,15 +25,16 @@ import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Programacion.Program
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+/*@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")*/
 @Table(name="user", uniqueConstraints = {@UniqueConstraint(columnNames = {"username"})})
 public class User implements UserDetails {
     @Id
     @GeneratedValue
     Integer id;
     @Basic
-    @Column(nullable = false)
+    @Column(/*nullable = false*/)
     String username;
-    @Column(nullable = false)
+    @Column(/*nullable = false*/)
     String lastname;
     String firstname;
     String country;
@@ -43,6 +47,18 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL/*, orphanRemoval = true*/)
     /*@JsonManagedReference*/
     private List<Programacion> programaciones;
+
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL/*, orphanRemoval = true*/)
+    /*@JsonManagedReference*/
+    private List<Licencia> licencias;
+
+    public User(Integer id, String username, String lastname, String firstname, String country, Object o) {
+        this.id = id;
+        this.username = username;
+        this.lastname = lastname;
+        this.firstname = firstname;
+        this.country = country;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
