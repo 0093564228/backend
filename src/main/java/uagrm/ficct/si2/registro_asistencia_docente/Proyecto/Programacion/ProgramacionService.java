@@ -90,7 +90,7 @@ public class ProgramacionService {
             new UserDTO(programacion.getUser().getId(), programacion.getUser().getUsername(), programacion.getUser().getLastname(), programacion.getUser().getFirstname(), programacion.getUser().getCountry(), null) :
             null;
 
-    return new ProgramacionDTO(programacion.getId(), programacion.getHorario_inicio(), programacion.getHorario_fin(), materiaDTO, grupoDTO, aulaDTO, userDTO);
+    return new ProgramacionDTO(programacion.getId(), programacion.getHorario_inicio(), programacion.getHorario_fin(),programacion.getDia(), materiaDTO, grupoDTO, aulaDTO, userDTO);
   }
 
   private Programacion convertToEntity(ProgramacionDTO programacionDTO) {
@@ -98,7 +98,7 @@ public class ProgramacionService {
     Grupo grupo = new Grupo(programacionDTO.getGrupoDTO().getId(), programacionDTO.getGrupoDTO().getNombre());
     Aula aula = new Aula(programacionDTO.getAulaDTO().getId(), programacionDTO.getAulaDTO().getNombre());
     User user = new User(programacionDTO.getUserDTO().getId(), programacionDTO.getUserDTO().getUsername(), programacionDTO.getUserDTO().getLastname(), programacionDTO.getUserDTO().getFirstname(), programacionDTO.getUserDTO().getCountry(), null /* Password no debería ser asignado directamente */);
-    return new Programacion(programacionDTO.getId(), programacionDTO.getHorario_inicio(), programacionDTO.getHorario_fin(), materia, grupo, aula, user, null /* Asistencias no se manejan aquí */);
+    return new Programacion(programacionDTO.getId(), programacionDTO.getHorario_inicio(), programacionDTO.getHorario_fin(),programacionDTO.getDia(), materia, grupo, aula, user, null /* Asistencias no se manejan aquí */);
   }
 }
 

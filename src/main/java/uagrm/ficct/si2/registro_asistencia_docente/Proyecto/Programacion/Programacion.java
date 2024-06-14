@@ -15,6 +15,7 @@ import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Grupo.Grupo;
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Licencia.Licencia;
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Materia.Materia;
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Modulo_Aula.Aula;
+import uagrm.ficct.si2.registro_asistencia_docente.User.Role;
 import uagrm.ficct.si2.registro_asistencia_docente.User.User;
 
 import java.time.LocalDate;
@@ -38,6 +39,9 @@ public class Programacion {
 
   @Column
   private LocalDateTime horario_fin;
+
+  @Enumerated(EnumType.STRING)
+  Dia dia;
 
   @ManyToOne
   @JoinColumn(name = "materia_id"/*, nullable = false*/)

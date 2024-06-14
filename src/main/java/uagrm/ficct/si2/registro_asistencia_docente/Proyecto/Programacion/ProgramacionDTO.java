@@ -1,6 +1,8 @@
 package uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Programacion;
 
 
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.*;
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Asistencia.Asistencia;
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Grupo.Grupo;
@@ -22,9 +24,11 @@ public class ProgramacionDTO {
   private Integer id;
   private LocalDateTime horario_inicio;
   private LocalDateTime horario_fin;
+  Dia dia;
   private MateriaDTO materiaDTO;
   private GrupoDTO grupoDTO;
   private AulaDTO aulaDTO;
   private UserDTO userDTO;
+
 }
 /*private List<Asistencia> asistencias;*/
