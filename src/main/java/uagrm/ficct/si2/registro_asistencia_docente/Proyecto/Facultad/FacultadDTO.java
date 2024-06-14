@@ -14,5 +14,6 @@ import java.util.List;
 public class FacultadDTO {
   private Integer id;
   private String nombre;
+  private String modulo;
 }
 /*private List<CarreraDTO> carreraDTOs;*/

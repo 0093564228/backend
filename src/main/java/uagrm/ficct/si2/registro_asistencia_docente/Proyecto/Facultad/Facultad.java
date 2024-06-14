@@ -24,6 +24,8 @@ public class Facultad {
     private Integer id;
     @Column/*(nullable = false)*/
     private String nombre;
+    @Column/*(nullable = false)*/
+    private String modulo;
 
     @OneToMany(mappedBy = "facultad",cascade = CascadeType.ALL/*, orphanRemoval = true*/)
     /*@JsonManagedReference*/

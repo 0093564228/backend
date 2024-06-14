@@ -47,10 +47,10 @@ public class FacultadService {
   }
 
   public FacultadDTO convertToDto(Facultad facultad) {
-    return new FacultadDTO(facultad.getId(), facultad.getNombre());
+    return new FacultadDTO(facultad.getId(), facultad.getNombre(), facultad.getModulo());
   }
 
   public Facultad convertToEntity(FacultadDTO facultadDTO) {
-    return new Facultad(facultadDTO.getId(), facultadDTO.getNombre(), null);
+    return new Facultad(facultadDTO.getId(), facultadDTO.getNombre(),facultadDTO.getModulo(), null);
   }
 }

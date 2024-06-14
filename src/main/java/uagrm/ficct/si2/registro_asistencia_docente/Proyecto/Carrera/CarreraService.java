@@ -59,7 +59,7 @@ public class CarreraService {
   }
 
   private CarreraDTO convertToDto(Carrera carrera) {
-    FacultadDTO facultadDTO = new FacultadDTO(carrera.getFacultad().getId(), carrera.getFacultad().getNombre());
+    FacultadDTO facultadDTO = new FacultadDTO(carrera.getFacultad().getId(), carrera.getFacultad().getNombre(), carrera.getFacultad().getModulo());
     return new CarreraDTO(carrera.getId(), carrera.getNombre(), facultadDTO);
   }
 
