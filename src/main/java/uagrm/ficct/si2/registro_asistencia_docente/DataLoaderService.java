@@ -215,8 +215,8 @@ public class DataLoaderService {
     programacionRepository.save(programacion19);
     programacionRepository.save(programacion20);
     /*---------------------------------------------------------------------------------------------------------------------*/
-    Licencia licencia1 = new Licencia(null, LocalDateTime.of(2024, 6, 11, 0, 0), LocalDateTime.of(2024, 7, 4, 0, 0), "Vacaciones", docente3);
-    Licencia licencia2 = new Licencia(null, LocalDateTime.of(2024, 6, 10, 0, 0), LocalDateTime.of(2024, 7, 5, 0, 0), "Cirugia", docente4);
+    Licencia licencia1 = new Licencia(1, LocalDateTime.of(2024, 6, 11, 0, 0), LocalDateTime.of(2024, 7, 4, 0, 0), "Vacaciones", docente3);
+    Licencia licencia2 = new Licencia(2, LocalDateTime.of(2024, 6, 10, 0, 0), LocalDateTime.of(2024, 7, 5, 0, 0), "Cirugia", docente4);
 
     licenciaRepository.save(licencia1);
     licenciaRepository.save(licencia2);

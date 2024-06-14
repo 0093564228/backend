@@ -14,7 +14,7 @@ import java.util.Optional;
 @AllArgsConstructor
 @RequestMapping("/api/materias")
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin/*(origins = "http://localhost:4200")*/
 public class MateriaController {
   private MateriaService materiaService;
 
