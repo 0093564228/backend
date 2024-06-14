@@ -17,7 +17,7 @@ import java.util.Optional;
 @AllArgsConstructor
 @RequestMapping("/api/users")
 @RestController
-@CrossOrigin
+/*@CrossOrigin*/
 public class UsuarioController {
 
   private UsuarioService userService;
