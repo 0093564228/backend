@@ -1,13 +1,9 @@
-package uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Modulo_Aula;
+package uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Aula;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Carrera.Carrera;
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Programacion.Programacion;
 
 

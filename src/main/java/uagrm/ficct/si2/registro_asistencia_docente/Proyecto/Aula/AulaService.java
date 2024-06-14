@@ -1,9 +1,7 @@
-package uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Modulo_Aula;
+package uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Aula;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Facultad.Facultad;
-import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Facultad.FacultadRepository;
 
 import java.util.List;
 import java.util.Optional;

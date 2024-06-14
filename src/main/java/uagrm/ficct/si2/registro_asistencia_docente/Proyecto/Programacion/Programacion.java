@@ -1,27 +1,19 @@
 package uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Programacion;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Asistencia.Asistencia;
-import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Facultad.Facultad;
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Grupo.Grupo;
-import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Licencia.Licencia;
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Materia.Materia;
-import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Modulo_Aula.Aula;
-import uagrm.ficct.si2.registro_asistencia_docente.User.Role;
+import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Aula.Aula;
 import uagrm.ficct.si2.registro_asistencia_docente.User.User;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.List;
-import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -39,6 +31,9 @@ public class Programacion {
 
   @Column
   private LocalDateTime horario_fin;
+
+  /*@Column
+  private LocalDateTime horario_fin;*/
 
   @Enumerated(EnumType.STRING)
   Dia dia;
