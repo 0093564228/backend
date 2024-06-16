@@ -206,17 +206,17 @@ public class DataLoaderService {
     Programacion programacion19 = new Programacion(19, LocalDateTime.of(2024, 7, 3, 3, 0, 0), LocalDateTime.of(2024, 7, 3, 4, 30), Dia.MARTES, materia3, grupo2, aula2, docente2, null);
     Programacion programacion20 = new Programacion(20, LocalDateTime.of(2024, 7, 5, 3, 0, 0), LocalDateTime.of(2024, 7, 5, 4, 30), Dia.MIERCOLES, materia3, grupo2, aula2, docente2, null);*/
     Programacion programacion9 = new Programacion(9, LocalTime.of(7, 0, 0), LocalTime.of(8, 30,0), Dia.LUNES, materia3, grupo2, aula2, docente2, null);
-    Programacion programacion10 = new Programacion(10, LocalTime.of(7, 0, 0), LocalTime.of(8, 30,0), Dia.MARTES, materia3, grupo2, aula2, docente2, null);
-    Programacion programacion11 = new Programacion(11, LocalTime.of(7, 0, 0), LocalTime.of(8, 30,0), Dia.MIERCOLES, materia3, grupo2, aula2, docente2, null);
+    Programacion programacion10 = new Programacion(10, LocalTime.of(7, 0, 0), LocalTime.of(8, 30,0), Dia.MIERCOLES, materia3, grupo2, aula2, docente2, null);
+    Programacion programacion11 = new Programacion(11, LocalTime.of(7, 0, 0), LocalTime.of(8, 30,0), Dia.VIERNES, materia3, grupo2, aula2, docente2, null);
     Programacion programacion12 = new Programacion(12, LocalTime.of(7, 0, 0), LocalTime.of(8, 30,0), Dia.LUNES, materia3, grupo2, aula2, docente2, null);
-    Programacion programacion13 = new Programacion(13, LocalTime.of(7, 0, 0), LocalTime.of(8, 30,0), Dia.MARTES, materia3, grupo2, aula2, docente2, null);
-    Programacion programacion14 = new Programacion(14, LocalTime.of(7, 0, 0), LocalTime.of(8, 30,0), Dia.MIERCOLES, materia3, grupo2, aula2, docente2, null);
+    Programacion programacion13 = new Programacion(13, LocalTime.of(7, 0, 0), LocalTime.of(8, 30,0), Dia.MIERCOLES, materia3, grupo2, aula2, docente2, null);
+    Programacion programacion14 = new Programacion(14, LocalTime.of(7, 0, 0), LocalTime.of(8, 30,0), Dia.VIERNES, materia3, grupo2, aula2, docente2, null);
     Programacion programacion15 = new Programacion(15, LocalTime.of(7, 0, 0), LocalTime.of(8, 30,0), Dia.LUNES, materia3, grupo2, aula2, docente2, null);
-    Programacion programacion16 = new Programacion(16, LocalTime.of(7, 0, 0), LocalTime.of(8, 30,0), Dia.MARTES, materia3, grupo2, aula2, docente2, null);
-    Programacion programacion17 = new Programacion(17, LocalTime.of(7, 0, 0), LocalTime.of(8, 30,0), Dia.MIERCOLES, materia3, grupo2, aula2, docente2, null);
+    Programacion programacion16 = new Programacion(16, LocalTime.of(7, 0, 0), LocalTime.of(8, 30,0), Dia.MIERCOLES, materia3, grupo2, aula2, docente2, null);
+    Programacion programacion17 = new Programacion(17, LocalTime.of(7, 0, 0), LocalTime.of(8, 30,0), Dia.VIERNES, materia3, grupo2, aula2, docente2, null);
     Programacion programacion18 = new Programacion(18, LocalTime.of(7, 0, 0), LocalTime.of(8, 30,0), Dia.LUNES, materia3, grupo2, aula2, docente2, null);
-    Programacion programacion19 = new Programacion(19, LocalTime.of(7, 0, 0), LocalTime.of(8, 30,0), Dia.MARTES, materia3, grupo2, aula2, docente2, null);
-    Programacion programacion20 = new Programacion(20, LocalTime.of(7, 0, 0), LocalTime.of(8, 30,0), Dia.MIERCOLES, materia3, grupo2, aula2, docente2, null);
+    Programacion programacion19 = new Programacion(19, LocalTime.of(7, 0, 0), LocalTime.of(8, 30,0), Dia.MIERCOLES, materia3, grupo2, aula2, docente2, null);
+    Programacion programacion20 = new Programacion(20, LocalTime.of(7, 0, 0), LocalTime.of(8, 30,0), Dia.VIERNES, materia3, grupo2, aula2, docente2, null);
 
     programacionRepository.save(programacion1);
     programacionRepository.save(programacion2);
