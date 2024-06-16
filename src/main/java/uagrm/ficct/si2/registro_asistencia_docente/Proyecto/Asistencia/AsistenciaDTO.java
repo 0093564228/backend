@@ -1,5 +1,7 @@
 package uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Asistencia;
 
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +17,8 @@ public class AsistenciaDTO {
   private Integer id;
   private LocalDateTime horario_inicio;
   private LocalDateTime horario_fin;
-  private String estado;
+  @Enumerated(EnumType.STRING)
+  Estado estado;
+  /*private String estado;*/
   private ProgramacionDTO programacionDTO;
 }

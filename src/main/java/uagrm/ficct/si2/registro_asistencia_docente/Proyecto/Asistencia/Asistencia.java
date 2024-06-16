@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Programacion.Programacion;
+import uagrm.ficct.si2.registro_asistencia_docente.User.Role;
 import uagrm.ficct.si2.registro_asistencia_docente.User.User;
 
 import java.time.LocalDateTime;
@@ -24,8 +25,10 @@ public class Asistencia {
   @Column
   private LocalDateTime horario_fin;
 
-  @Column
-  private String estado;
+  /*@Column
+  private String estado;*/
+  @Enumerated(EnumType.STRING)
+  Estado estado;
 
   @ManyToOne
   @JoinColumn(name = "programacion_id"/*, nullable = false*/)

@@ -6,6 +6,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Asistencia.Asistencia;
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Asistencia.AsistenciaRepository;
+import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Asistencia.Estado;
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Carrera.Carrera;
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Carrera.CarreraRepository;
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Facultad.Facultad;
@@ -224,28 +225,28 @@ public class DataLoaderService {
     licenciaRepository.save(licencia2);
     /*---------------------------------------------------------------------------------------------------------------------*/
 
-    Asistencia asistencia1 = new Asistencia(1, LocalDateTime.of(2024, 6, 11, 3, 0, 0), LocalDateTime.of(2024, 6, 11, 5, 15), "Presente", programacion1);
-    Asistencia asistencia2 = new Asistencia(2, LocalDateTime.of(2024, 6, 13, 3, 0, 0), LocalDateTime.of(2024, 6, 13, 5, 15), "Presente", programacion2);
-    Asistencia asistencia3 = new Asistencia(3, LocalDateTime.of(2024, 6, 18, 3, 0, 0), LocalDateTime.of(2024, 6, 18, 5, 15), "Presente", programacion3);
-    Asistencia asistencia4 = new Asistencia(4, LocalDateTime.of(2024, 6, 20, 3, 0, 0), LocalDateTime.of(2024, 6, 20, 5, 15), "Presente", programacion4);
-    Asistencia asistencia5 = new Asistencia(5, LocalDateTime.of(2024, 6, 25, 3, 0, 0), LocalDateTime.of(2024, 6, 25, 5, 15), "Presente", programacion5);
-    Asistencia asistencia6 = new Asistencia(6, LocalDateTime.of(2024, 6, 27, 3, 0, 0), LocalDateTime.of(2024, 6, 27, 5, 15), "Presente", programacion6);
-    Asistencia asistencia7 = new Asistencia(7, LocalDateTime.of(2024, 7, 2, 3, 0, 0), LocalDateTime.of(2024, 7, 2, 5, 15), "Presente", programacion7);
-    Asistencia asistencia8 = new Asistencia(8, LocalDateTime.of(2024, 7, 4, 3, 0, 0), LocalDateTime.of(2024, 7, 4, 5, 15), "Presente", programacion8);
+    Asistencia asistencia1 = new Asistencia(1, LocalDateTime.of(2024, 6, 11, 3, 0, 0), LocalDateTime.of(2024, 6, 11, 5, 15), Estado.PRESENTE, programacion1);
+    Asistencia asistencia2 = new Asistencia(2, LocalDateTime.of(2024, 6, 13, 3, 0, 0), LocalDateTime.of(2024, 6, 13, 5, 15), Estado.PRESENTE, programacion2);
+    Asistencia asistencia3 = new Asistencia(3, LocalDateTime.of(2024, 6, 18, 3, 0, 0), LocalDateTime.of(2024, 6, 18, 5, 15), Estado.PRESENTE, programacion3);
+    Asistencia asistencia4 = new Asistencia(4, LocalDateTime.of(2024, 6, 20, 3, 0, 0), LocalDateTime.of(2024, 6, 20, 5, 15), Estado.PRESENTE, programacion4);
+    Asistencia asistencia5 = new Asistencia(5, LocalDateTime.of(2024, 6, 25, 3, 0, 0), LocalDateTime.of(2024, 6, 25, 5, 15), Estado.PRESENTE, programacion5);
+    Asistencia asistencia6 = new Asistencia(6, LocalDateTime.of(2024, 6, 27, 3, 0, 0), LocalDateTime.of(2024, 6, 27, 5, 15), Estado.PRESENTE, programacion6);
+    Asistencia asistencia7 = new Asistencia(7, LocalDateTime.of(2024, 7, 2, 3, 0, 0), LocalDateTime.of(2024, 7, 2, 5, 15), Estado.PRESENTE, programacion7);
+    Asistencia asistencia8 = new Asistencia(8, LocalDateTime.of(2024, 7, 4, 3, 0, 0), LocalDateTime.of(2024, 7, 4, 5, 15), Estado.PRESENTE, programacion8);
 
 
-    Asistencia asistencia9 = new Asistencia(9, LocalDateTime.of(2024, 6, 10, 3, 0, 0), LocalDateTime.of(2024, 6, 10, 4, 30), "Presente", programacion9);
-    Asistencia asistencia10 = new Asistencia(10, LocalDateTime.of(2024, 6, 12, 3, 0, 0), LocalDateTime.of(2024, 6, 12, 4, 30), "Presente", programacion10);
-    Asistencia asistencia11 = new Asistencia(11, LocalDateTime.of(2024, 6, 14, 3, 0, 0), LocalDateTime.of(2024, 6, 14, 4, 30), "Presente", programacion11);
-    Asistencia asistencia12 = new Asistencia(12, LocalDateTime.of(2024, 6, 17, 3, 0, 0), LocalDateTime.of(2024, 6, 17, 4, 30), "Presente", programacion12);
-    Asistencia asistencia13 = new Asistencia(13, LocalDateTime.of(2024, 6, 19, 3, 0, 0), LocalDateTime.of(2024, 6, 19, 4, 30), "Presente", programacion13);
-    Asistencia asistencia14 = new Asistencia(14, LocalDateTime.of(2024, 6, 21, 3, 0, 0), LocalDateTime.of(2024, 6, 21, 4, 30), "Presente", programacion14);
-    Asistencia asistencia15 = new Asistencia(15, LocalDateTime.of(2024, 6, 24, 3, 0, 0), LocalDateTime.of(2024, 6, 24, 4, 30), "Presente", programacion15);
-    Asistencia asistencia16 = new Asistencia(16, LocalDateTime.of(2024, 6, 26, 3, 0, 0), LocalDateTime.of(2024, 6, 26, 4, 30), "Presente", programacion16);
-    Asistencia asistencia17 = new Asistencia(17, LocalDateTime.of(2024, 6, 28, 3, 0, 0), LocalDateTime.of(2024, 6, 28, 4, 30), "Presente", programacion17);
-    Asistencia asistencia18 = new Asistencia(18, LocalDateTime.of(2024, 7, 1, 3, 0, 0), LocalDateTime.of(2024, 7, 1, 4, 30), "Presente", programacion18);
-    Asistencia asistencia19 = new Asistencia(19, LocalDateTime.of(2024, 7, 3, 3, 0, 0), LocalDateTime.of(2024, 7, 3, 4, 30), "Presente", programacion19);
-    Asistencia asistencia20 = new Asistencia(20, LocalDateTime.of(2024, 7, 5, 3, 0, 0), LocalDateTime.of(2024, 7, 5, 4, 30), "Presente", programacion20);
+    Asistencia asistencia9 = new Asistencia(9, LocalDateTime.of(2024, 6, 10, 3, 0, 0), LocalDateTime.of(2024, 6, 10, 4, 30), Estado.PRESENTE, programacion9);
+    Asistencia asistencia10 = new Asistencia(10, LocalDateTime.of(2024, 6, 12, 3, 0, 0), LocalDateTime.of(2024, 6, 12, 4, 30), Estado.PRESENTE, programacion10);
+    Asistencia asistencia11 = new Asistencia(11, LocalDateTime.of(2024, 6, 14, 3, 0, 0), LocalDateTime.of(2024, 6, 14, 4, 30), Estado.PRESENTE, programacion11);
+    Asistencia asistencia12 = new Asistencia(12, LocalDateTime.of(2024, 6, 17, 3, 0, 0), LocalDateTime.of(2024, 6, 17, 4, 30), Estado.PRESENTE, programacion12);
+    Asistencia asistencia13 = new Asistencia(13, LocalDateTime.of(2024, 6, 19, 3, 0, 0), LocalDateTime.of(2024, 6, 19, 4, 30), Estado.PRESENTE, programacion13);
+    Asistencia asistencia14 = new Asistencia(14, LocalDateTime.of(2024, 6, 21, 3, 0, 0), LocalDateTime.of(2024, 6, 21, 4, 30), Estado.PRESENTE, programacion14);
+    Asistencia asistencia15 = new Asistencia(15, LocalDateTime.of(2024, 6, 24, 3, 0, 0), LocalDateTime.of(2024, 6, 24, 4, 30), Estado.PRESENTE, programacion15);
+    Asistencia asistencia16 = new Asistencia(16, LocalDateTime.of(2024, 6, 26, 3, 0, 0), LocalDateTime.of(2024, 6, 26, 4, 30), Estado.PRESENTE, programacion16);
+    Asistencia asistencia17 = new Asistencia(17, LocalDateTime.of(2024, 6, 28, 3, 0, 0), LocalDateTime.of(2024, 6, 28, 4, 30), Estado.PRESENTE, programacion17);
+    Asistencia asistencia18 = new Asistencia(18, LocalDateTime.of(2024, 7, 1, 3, 0, 0), LocalDateTime.of(2024, 7, 1, 4, 30), Estado.PRESENTE, programacion18);
+    Asistencia asistencia19 = new Asistencia(19, LocalDateTime.of(2024, 7, 3, 3, 0, 0), LocalDateTime.of(2024, 7, 3, 4, 30), Estado.PRESENTE, programacion19);
+    Asistencia asistencia20 = new Asistencia(20, LocalDateTime.of(2024, 7, 5, 3, 0, 0), LocalDateTime.of(2024, 7, 5, 4, 30), Estado.PRESENTE, programacion20);
     asistenciaRepository.save(asistencia1);
     asistenciaRepository.save(asistencia2);
     asistenciaRepository.save(asistencia3);
