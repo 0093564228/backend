@@ -2,6 +2,7 @@ package uagrm.ficct.si2.registro_asistencia_docente;
 
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Asistencia.Asistencia;
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Asistencia.AsistenciaRepository;
@@ -60,6 +61,7 @@ public class DataLoaderService {
   @Autowired
   private LicenciaRepository licenciaRepository;
 
+  private final PasswordEncoder passwordEncoder;
 
   public void loadData() {
 
@@ -148,14 +150,14 @@ public class DataLoaderService {
     grupoRepository.save(grupo9);
     grupoRepository.save(grupo10);
     grupoRepository.save(grupo11);
-    ;
+
     /*---------------------------------------------------------------------------------------------------------------------*/
-    User docente1 = new User(1, "docente1@gmail.com", "Carriazo", "Raul", "SC", "12345678", Role.USER, null, null);
-    User docente2 = new User(2, "docente2@gmail.com", "Gutierres", "Pablo", "SC", "12345678", Role.USER, null, null);
-    User docente3 = new User(3, "docente3@gmail.com", "Obando", "Luis", "SC", "12345678", Role.USER, null, null);
-    User docente4 = new User(4, "docente4@gmail.com", "Quintana", "Roberto", "SC", "12345678", Role.USER, null, null);
-    User admin1 = new User(5, "admin1@gmail.com", "López", "Abel", "SC", "12345678", Role.ADMIN, null, null);
-    User admin2 = new User(6, "admin2@gmail.com", "Vaca", "Priscila", "SC", "12345678", Role.ADMIN, null, null);
+    User docente1 = new User(1, "docente1@gmail.com", "Carriazo", "Raul", "SC", passwordEncoder.encode("12345678"), Role.USER, null, null);
+    User docente2 = new User(2, "docente2@gmail.com", "Gutierres", "Pablo", "SC", passwordEncoder.encode("12345678"), Role.USER, null, null);
+    User docente3 = new User(3, "docente3@gmail.com", "Obando", "Luis", "SC", passwordEncoder.encode("12345678"), Role.USER, null, null);
+    User docente4 = new User(4, "docente4@gmail.com", "Quintana", "Roberto", "SC", passwordEncoder.encode("12345678"), Role.USER, null, null);
+    User admin1 = new User(5, "admin1@gmail.com", "López", "Abel", "SC", passwordEncoder.encode("12345678"), Role.ADMIN, null, null);
+    User admin2 = new User(6, "admin2@gmail.com", "Vaca", "Priscila", "SC", passwordEncoder.encode("12345678"), Role.ADMIN, null, null);
     usuarioRepository.save(docente1);
     usuarioRepository.save(docente2);
     usuarioRepository.save(docente3);
