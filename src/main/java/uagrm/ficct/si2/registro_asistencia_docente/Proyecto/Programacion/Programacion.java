@@ -12,6 +12,7 @@ import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Aula.Aula;
 import uagrm.ficct.si2.registro_asistencia_docente.User.User;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.ZonedDateTime;
 import java.util.List;
 
@@ -26,12 +27,22 @@ public class Programacion {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
+
   @Column
+  private LocalTime horario_inicio;
+
+  @Column
+  private LocalTime horario_fin;
+
+  /*@Column
   private LocalDateTime horario_inicio;
 
   @Column
-  private LocalDateTime horario_fin;
+  private LocalDateTime horario_fin;*/
 
+
+  /*@Column
+  private LocalTime horario_fin1;*/
   /*@Column
   private LocalDateTime horario_fin;*/
 
