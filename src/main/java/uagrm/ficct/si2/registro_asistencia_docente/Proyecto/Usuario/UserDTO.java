@@ -22,11 +22,13 @@ public class UserDTO {
   String telefono;
   Role role;
 
-  public UserDTO(Integer id, String username, String lastname, String firstname, String country, Object o) {
+  public UserDTO(Integer id, String username, String lastname, String firstname, String country,String ci,String telefono, Object o) {
     this.id = id;
     this.username = username;
     this.lastname = lastname;
     this.firstname = firstname;
     this.country = country;
+    this.ci = ci;
+    this.telefono = telefono;
   }
 }

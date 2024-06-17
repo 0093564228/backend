@@ -95,7 +95,7 @@ public class AsistenciaService {
             new AulaDTO(programacion.getAula().getId(), programacion.getAula().getNombre()) :
             null;
     UserDTO userDTO = programacion.getUser() != null ?
-            new UserDTO(programacion.getUser().getId(), programacion.getUser().getUsername(), programacion.getUser().getLastname(), programacion.getUser().getFirstname(), programacion.getUser().getCountry(), null) :
+            new UserDTO(programacion.getUser().getId(), programacion.getUser().getUsername(), programacion.getUser().getLastname(), programacion.getUser().getFirstname(), programacion.getUser().getCountry(),programacion.getUser().getCi(),programacion.getUser().getTelefono(), null) :
             null;
     return new ProgramacionDTO(
             programacion.getId(),
