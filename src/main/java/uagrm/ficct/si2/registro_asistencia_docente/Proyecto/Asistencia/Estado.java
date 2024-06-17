@@ -6,5 +6,6 @@ public enum Estado {
   LICENCIA,
   AUSENTE,
   RETRASADO,
-  TARDE
+  TARDE,
+  PENDIENTE
 }

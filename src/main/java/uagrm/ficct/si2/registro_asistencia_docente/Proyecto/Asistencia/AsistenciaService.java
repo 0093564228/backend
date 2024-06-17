@@ -1,6 +1,7 @@
 package uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Asistencia;
 
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Grupo.Grupo;
@@ -14,6 +15,7 @@ import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Programacion.Program
 import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Usuario.UserDTO;
 import uagrm.ficct.si2.registro_asistencia_docente.User.User;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -132,5 +134,18 @@ public class AsistenciaService {
             null // Asistencias no se manejan aquí
     );
   }
+
+  /*@Transactional
+  public void verificarYRegistrarFaltas() {
+    LocalDateTime now = LocalDateTime.now();
+    List<Asistencia> asistencias = asistenciaRepository.findByEstadoAndHorarioFinBefore(Estado.PENDIENTE, now);
+
+    for (Asistencia asistencia : asistencias) {
+      if (asistencia.getHorario_fin() == null || asistencia.getHorario_fin().isBefore(now)) {
+        asistencia.setEstado(Estado.FALTA);
+        asistenciaRepository.save(asistencia);
+      }
+    }
+  }*/
 
 }
