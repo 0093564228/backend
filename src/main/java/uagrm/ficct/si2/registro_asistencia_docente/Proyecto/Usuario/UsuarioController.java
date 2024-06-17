@@ -52,4 +52,9 @@ public class UsuarioController {
     userService.deleteById(id);
     return ResponseEntity.noContent().build();
   }
+
+  @GetMapping("/con-programacion")
+  public List<UserDTO> obtenerUsuariosConProgramacion() {
+    return userService.obtenerUsuariosConProgramaciones();
+  }
 }

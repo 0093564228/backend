@@ -2,6 +2,7 @@ package uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Usuario;
 
 
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -75,5 +76,14 @@ public class UsuarioService {
             .telefono(userDTO.getTelefono())
             .role(userDTO.getRole())
             .build();
+  }
+
+
+  // Método para obtener usuarios con programaciones
+  public List<UserDTO> obtenerUsuariosConProgramaciones() {
+    List<User> usersWithProgramaciones = userRepository.findByProgramacionesIsNotNull();
+    return usersWithProgramaciones.stream()
+            .map(this::convertToDto)
+            .collect(Collectors.toList());
   }
 }

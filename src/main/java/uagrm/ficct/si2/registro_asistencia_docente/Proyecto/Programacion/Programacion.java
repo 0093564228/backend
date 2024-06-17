@@ -36,15 +36,7 @@ public class Programacion {
 
   /*@Column
   private LocalDateTime horario_inicio;
-
-  @Column
-  private LocalDateTime horario_fin;*/
-
-
-  /*@Column
-  private LocalTime horario_fin1;*/
-  /*@Column
-  private LocalDateTime horario_fin;*/
+  */
 
   @Enumerated(EnumType.STRING)
   Dia dia;
