@@ -59,7 +59,7 @@ public class UsuarioService {
   // Método para convertir de User a UserDTO
   private UserDTO convertToDto(User user) {
     return new UserDTO(user.getId(), user.getUsername(), user.getLastname(), user.getFirstname(),
-            user.getCountry(), null, user.getRole());
+            user.getCountry(), null,user.getCi(),user.getTelefono(), user.getRole());
   }
 
   // Método para convertir de UserDTO a User
@@ -71,6 +71,8 @@ public class UsuarioService {
             .firstname(userDTO.getFirstname())
             .country(userDTO.getCountry())
             .password(userDTO.getPassword())
+            .ci(userDTO.getCi())
+            .telefono(userDTO.getTelefono())
             .role(userDTO.getRole())
             .build();
   }

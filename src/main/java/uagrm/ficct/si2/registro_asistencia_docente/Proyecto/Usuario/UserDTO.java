@@ -18,6 +18,8 @@ public class UserDTO {
   private String firstname;
   private String country;
   private String password;
+  String ci;
+  String telefono;
   Role role;
 
   public UserDTO(Integer id, String username, String lastname, String firstname, String country, Object o) {

@@ -72,6 +72,8 @@ public class LicenciaService {
             licenciaDTO.getUserDTO().getLastname(),
             licenciaDTO.getUserDTO().getFirstname(),
             licenciaDTO.getUserDTO().getCountry(),
+            licenciaDTO.getUserDTO().getCi(),
+            licenciaDTO.getUserDTO().getTelefono(),
             null /* Password no debería ser asignado directamente */
     );
     return new Licencia(

@@ -154,12 +154,12 @@ public class DataLoaderService {
     grupoRepository.save(grupo11);
 
     /*---------------------------------------------------------------------------------------------------------------------*/
-    User docente1 = new User(1, "docente1@gmail.com", "Carriazo", "Raul", "SC", passwordEncoder.encode("12345678"), Role.USER, null, null);
-    User docente2 = new User(2, "docente2@gmail.com", "Gutierres", "Pablo", "SC", passwordEncoder.encode("12345678"), Role.USER, null, null);
-    User docente3 = new User(3, "docente3@gmail.com", "Obando", "Luis", "SC", passwordEncoder.encode("12345678"), Role.USER, null, null);
-    User docente4 = new User(4, "docente4@gmail.com", "Quintana", "Roberto", "SC", passwordEncoder.encode("12345678"), Role.USER, null, null);
-    User admin1 = new User(5, "admin1@gmail.com", "López", "Abel", "SC", passwordEncoder.encode("12345678"), Role.ADMIN, null, null);
-    User admin2 = new User(6, "admin2@gmail.com", "Vaca", "Priscila", "SC", passwordEncoder.encode("12345678"), Role.ADMIN, null, null);
+    User docente1 = new User(1, "docente1@gmail.com", "Carriazo", "Raul", "SC", passwordEncoder.encode("12345678"),"11023445","68898883", Role.USER, null, null);
+    User docente2 = new User(2, "docente2@gmail.com", "Gutierres", "Pablo", "SC", passwordEncoder.encode("12345678"),"34395485","73546277", Role.USER, null, null);
+    User docente3 = new User(3, "docente3@gmail.com", "Obando", "Luis", "SC", passwordEncoder.encode("12345678"),"10345298","72638446", Role.USER, null, null);
+    User docente4 = new User(4, "docente4@gmail.com", "Quintana", "Roberto", "SC", passwordEncoder.encode("12345678"), "45782168","68045227",Role.USER, null, null);
+    User admin1 = new User(5, "admin1@gmail.com", "López", "Abel", "SC", passwordEncoder.encode("12345678"), "6744564","69933412",Role.ADMIN, null, null);
+    User admin2 = new User(6, "admin2@gmail.com", "Vaca", "Priscila", "SC", passwordEncoder.encode("12345678"), "5532566","72354668",Role.ADMIN, null, null);
     usuarioRepository.save(docente1);
     usuarioRepository.save(docente2);
     usuarioRepository.save(docente3);
@@ -169,21 +169,7 @@ public class DataLoaderService {
     /*---------------------------------------------------------------------------------------------------------------------*/
 
 
-    /*LocalDateTime horario_inicio1 = LocalDateTime.of(2024, 6, 14, 3, 0, 0);
-    LocalDateTime horario_fin1 = LocalDateTime.of(2024, 6, 14, 5, 15);
 
-    System.out.println("horario_inicio1: " + horario_inicio1);
-    System.out.println("horario_inicio1: " + horario_fin1);*/
-
-    /*programacion para docente1 para un mes , dias martes y jueves, 2hrs 15min*/
-    /*Programacion programacion1 = new Programacion(1, LocalDateTime.of(2024, 6, 11, 3, 0, 0), LocalDateTime.of(2024, 6, 11, 5, 15), Dia.MARTES, materia7, grupo1, aula1, docente1, null);
-    Programacion programacion2 = new Programacion(2, LocalDateTime.of(2024, 6, 13, 3, 0, 0), LocalDateTime.of(2024, 6, 13, 5, 15), Dia.JUEVES, materia7, grupo1, aula1, docente1, null);
-    Programacion programacion3 = new Programacion(3, LocalDateTime.of(2024, 6, 18, 3, 0, 0), LocalDateTime.of(2024, 6, 18, 5, 15), Dia.MARTES, materia7, grupo1, aula1, docente1, null);
-    Programacion programacion4 = new Programacion(4, LocalDateTime.of(2024, 6, 20, 3, 0, 0), LocalDateTime.of(2024, 6, 20, 5, 15), Dia.JUEVES, materia7, grupo1, aula1, docente1, null);
-    Programacion programacion5 = new Programacion(5, LocalDateTime.of(2024, 6, 25, 3, 0, 0), LocalDateTime.of(2024, 6, 25, 5, 15), Dia.MARTES, materia7, grupo1, aula1, docente1, null);
-    Programacion programacion6 = new Programacion(6, LocalDateTime.of(2024, 6, 27, 3, 0, 0), LocalDateTime.of(2024, 6, 27, 5, 15), Dia.JUEVES, materia7, grupo1, aula1, docente1, null);
-    Programacion programacion7 = new Programacion(7, LocalDateTime.of(2024, 7, 2, 3, 0, 0), LocalDateTime.of(2024, 7, 2, 5, 15), Dia.MARTES, materia7, grupo1, aula1, docente1, null);
-    Programacion programacion8 = new Programacion(8, LocalDateTime.of(2024, 7, 4, 3, 0, 0), LocalDateTime.of(2024, 7, 4, 5, 15), Dia.JUEVES, materia7, grupo1, aula1, docente1, null);*/
     Programacion programacion1 = new Programacion(1, LocalTime.of(7, 0, 0), LocalTime.of( 9, 15,0), Dia.MARTES, materia7, grupo1, aula1, docente1, null);
     Programacion programacion2 = new Programacion(2, LocalTime.of(7, 0, 0), LocalTime.of(9, 15,0), Dia.JUEVES, materia7, grupo1, aula1, docente1, null);
     Programacion programacion3 = new Programacion(3, LocalTime.of(7, 0, 0), LocalTime.of(9, 15,0), Dia.MARTES, materia7, grupo1, aula1, docente1, null);
@@ -192,19 +178,7 @@ public class DataLoaderService {
     Programacion programacion6 = new Programacion(6, LocalTime.of(7, 0, 0), LocalTime.of(9, 15,0), Dia.JUEVES, materia7, grupo1, aula1, docente1, null);
     Programacion programacion7 = new Programacion(7, LocalTime.of(7, 0, 0), LocalTime.of(9, 15,0), Dia.MARTES, materia7, grupo1, aula1, docente1, null);
     Programacion programacion8 = new Programacion(8, LocalTime.of(7, 0, 0), LocalTime.of(9, 15,0), Dia.JUEVES, materia7, grupo1, aula1, docente1, null);
-    /*programacion para docente2 para un mes , dias lunes miercoles viernes , 1hr 30min*/
-    /*Programacion programacion9 = new Programacion(9, LocalDateTime.of(2024, 6, 10, 3, 0, 0), LocalDateTime.of(2024, 6, 10, 4, 30), Dia.LUNES, materia3, grupo2, aula2, docente2, null);
-    Programacion programacion10 = new Programacion(10, LocalDateTime.of(2024, 6, 12, 3, 0, 0), LocalDateTime.of(2024, 6, 12, 4, 30), Dia.MARTES, materia3, grupo2, aula2, docente2, null);
-    Programacion programacion11 = new Programacion(11, LocalDateTime.of(2024, 6, 14, 3, 0, 0), LocalDateTime.of(2024, 6, 14, 4, 30), Dia.MIERCOLES, materia3, grupo2, aula2, docente2, null);
-    Programacion programacion12 = new Programacion(12, LocalDateTime.of(2024, 6, 17, 3, 0, 0), LocalDateTime.of(2024, 6, 17, 4, 30), Dia.LUNES, materia3, grupo2, aula2, docente2, null);
-    Programacion programacion13 = new Programacion(13, LocalDateTime.of(2024, 6, 19, 3, 0, 0), LocalDateTime.of(2024, 6, 19, 4, 30), Dia.MARTES, materia3, grupo2, aula2, docente2, null);
-    Programacion programacion14 = new Programacion(14, LocalDateTime.of(2024, 6, 21, 3, 0, 0), LocalDateTime.of(2024, 6, 21, 4, 30), Dia.MIERCOLES, materia3, grupo2, aula2, docente2, null);
-    Programacion programacion15 = new Programacion(15, LocalDateTime.of(2024, 6, 24, 3, 0, 0), LocalDateTime.of(2024, 6, 24, 4, 30), Dia.LUNES, materia3, grupo2, aula2, docente2, null);
-    Programacion programacion16 = new Programacion(16, LocalDateTime.of(2024, 6, 26, 3, 0, 0), LocalDateTime.of(2024, 6, 26, 4, 30), Dia.MARTES, materia3, grupo2, aula2, docente2, null);
-    Programacion programacion17 = new Programacion(17, LocalDateTime.of(2024, 6, 28, 3, 0, 0), LocalDateTime.of(2024, 6, 28, 4, 30), Dia.MIERCOLES, materia3, grupo2, aula2, docente2, null);
-    Programacion programacion18 = new Programacion(18, LocalDateTime.of(2024, 7, 1, 3, 0, 0), LocalDateTime.of(2024, 7, 1, 4, 30), Dia.LUNES, materia3, grupo2, aula2, docente2, null);
-    Programacion programacion19 = new Programacion(19, LocalDateTime.of(2024, 7, 3, 3, 0, 0), LocalDateTime.of(2024, 7, 3, 4, 30), Dia.MARTES, materia3, grupo2, aula2, docente2, null);
-    Programacion programacion20 = new Programacion(20, LocalDateTime.of(2024, 7, 5, 3, 0, 0), LocalDateTime.of(2024, 7, 5, 4, 30), Dia.MIERCOLES, materia3, grupo2, aula2, docente2, null);*/
+
     Programacion programacion9 = new Programacion(9, LocalTime.of(7, 0, 0), LocalTime.of(8, 30,0), Dia.LUNES, materia3, grupo2, aula2, docente2, null);
     Programacion programacion10 = new Programacion(10, LocalTime.of(7, 0, 0), LocalTime.of(8, 30,0), Dia.MIERCOLES, materia3, grupo2, aula2, docente2, null);
     Programacion programacion11 = new Programacion(11, LocalTime.of(7, 0, 0), LocalTime.of(8, 30,0), Dia.VIERNES, materia3, grupo2, aula2, docente2, null);

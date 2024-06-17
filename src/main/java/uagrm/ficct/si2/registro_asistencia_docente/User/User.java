@@ -26,59 +26,67 @@ import uagrm.ficct.si2.registro_asistencia_docente.Proyecto.Programacion.Program
 @AllArgsConstructor
 @Entity
 /*@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")*/
-@Table(name="user", uniqueConstraints = {@UniqueConstraint(columnNames = {"username"})})
+@Table(name = "user", uniqueConstraints = {@UniqueConstraint(columnNames = {"username"})})
 public class User implements UserDetails {
-    @Id
-    @GeneratedValue
-    Integer id;
-    @Basic
-    @Column(/*nullable = false*/)
-    String username;
-    @Column(/*nullable = false*/)
-    String lastname;
-    String firstname;
-    String country;
-    String password;
+  @Id
+  @GeneratedValue
+  Integer id;
+  @Basic
+  @Column(/*nullable = false*/)
+  String username;
+  @Column(/*nullable = false*/)
+  String lastname;
+  String firstname;
+  String country;
+  String password;
+  String ci;
+  String telefono;
 
 
-    @Enumerated(EnumType.STRING) 
-    Role role;
+  @Enumerated(EnumType.STRING)
+  Role role;
 
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL/*, orphanRemoval = true*/)
-    /*@JsonManagedReference*/
-    private List<Programacion> programaciones;
+  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL/*, orphanRemoval = true*/)
+  /*@JsonManagedReference*/
+  private List<Programacion> programaciones;
 
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL/*, orphanRemoval = true*/)
-    /*@JsonManagedReference*/
-    private List<Licencia> licencias;
+  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL/*, orphanRemoval = true*/)
+  /*@JsonManagedReference*/
+  private List<Licencia> licencias;
 
-    public User(Integer id, String username, String lastname, String firstname, String country, Object o) {
-        this.id = id;
-        this.username = username;
-        this.lastname = lastname;
-        this.firstname = firstname;
-        this.country = country;
-    }
+  public User(Integer id, String username, String lastname, String firstname, String country, String ci, String telefono, Object o) {
+    this.id = id;
+    this.username = username;
+    this.lastname = lastname;
+    this.firstname = firstname;
+    this.country = country;
+    this.ci = ci;
+    this.telefono = telefono;
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-      return List.of(new SimpleGrantedAuthority((role.name())));
-    }
+  }
 
-    @Override
-    public boolean isAccountNonExpired() {
-       return true;
-    }
-    @Override
-    public boolean isAccountNonLocked() {
-       return true;
-    }
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
+  @Override
+  public Collection<? extends GrantedAuthority> getAuthorities() {
+    return List.of(new SimpleGrantedAuthority((role.name())));
+  }
+
+  @Override
+  public boolean isAccountNonExpired() {
+    return true;
+  }
+
+  @Override
+  public boolean isAccountNonLocked() {
+    return true;
+  }
+
+  @Override
+  public boolean isCredentialsNonExpired() {
+    return true;
+  }
+
+  @Override
+  public boolean isEnabled() {
+    return true;
+  }
 }

@@ -82,7 +82,7 @@ public class ProgramacionService {
     Materia materia = new Materia(programacionDTO.getMateriaDTO().getId(), programacionDTO.getMateriaDTO().getNombre(), programacionDTO.getMateriaDTO().getSigla(), null /* No se asigna carrera en este contexto */);
     Grupo grupo = new Grupo(programacionDTO.getGrupoDTO().getId(), programacionDTO.getGrupoDTO().getNombre());
     Aula aula = new Aula(programacionDTO.getAulaDTO().getId(), programacionDTO.getAulaDTO().getNombre());
-    User user = new User(programacionDTO.getUserDTO().getId(), programacionDTO.getUserDTO().getUsername(), programacionDTO.getUserDTO().getLastname(), programacionDTO.getUserDTO().getFirstname(), programacionDTO.getUserDTO().getCountry(), null /* Password no debería ser asignado directamente */);
+    User user = new User(programacionDTO.getUserDTO().getId(), programacionDTO.getUserDTO().getUsername(), programacionDTO.getUserDTO().getLastname(), programacionDTO.getUserDTO().getFirstname(), programacionDTO.getUserDTO().getCountry(), programacionDTO.getUserDTO().getCi(),programacionDTO.getUserDTO().getTelefono(), null /* Password no debería ser asignado directamente */);
     return new Programacion(programacionDTO.getId(), programacionDTO.getHorario_inicio(), programacionDTO.getHorario_fin(),programacionDTO.getDia(), materia, grupo, aula, user, null /* Asistencias no se manejan aquí */);
   }
 }
