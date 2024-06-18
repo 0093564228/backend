@@ -11,7 +11,7 @@ import java.util.Optional;
 @AllArgsConstructor
 @RequestMapping("/api/facultades")
 @RestController
-/*@CrossOrigin*//*(origins = "http://localhost:4200")*/
+@CrossOrigin/*(origins = "http://localhost:4200")*/
 public class FacultadController {
 
   private FacultadService facultadService;

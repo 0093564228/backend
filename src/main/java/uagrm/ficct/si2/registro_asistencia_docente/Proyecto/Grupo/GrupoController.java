@@ -13,7 +13,7 @@ import java.util.Optional;
 @AllArgsConstructor
 @RequestMapping("/api/grupos")
 @RestController
-/*@CrossOrigin*//*(origins = "http://localhost:4200")*/
+@CrossOrigin/*(origins = "http://localhost:4200")*/
 public class GrupoController {
 
     private GrupoService grupoService;
